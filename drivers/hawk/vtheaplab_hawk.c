@@ -21,8 +21,8 @@
 #include <linux/io.h>
 
 
-#include <stdio.h>
-#include <stdint.h>
+//#include <stdio.h>
+//#include <stdint.h>
 
 #define DRIVER_NAME "VTHEAPLAB_HAWK"
 
