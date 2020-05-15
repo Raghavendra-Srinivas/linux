@@ -109,9 +109,9 @@ static void hawk_enable_interrupts()
  * This function disables the Tx and Rx interrupts for the Emaclite device,
  * along with the Global Interrupt Enable.
  */
-static void hawk_disable_interrupts()
-{
-	u32 reg_data;
+//static void hawk_disable_interrupts()
+//{
+//	u32 reg_data;
 
 	/* Disable the Global Interrupt Enable */
 	//hawk_writel(XEL_GIER_GIE_MASK, drvdata->base_addr + XEL_GIER_OFFSET);
@@ -121,7 +121,8 @@ static void hawk_disable_interrupts()
 	//hawk_writel(reg_data & (~XEL_TSR_XMIT_IE_MASK),
 	//		 drvdata->base_addr + XEL_TSR_OFFSET);
 
-}
+//}
+
 
 /**********************/
 /* Interrupt Handlers */
