@@ -1,0 +1,10 @@
+#
+# VT- HeadLab HAWK device configuration
+#
+
+config VTHEAPLAB_HAWK 
+	tristate "Vt HeapLab HAWK Support"
+	default y
+	---help---
+	  This driver supports ISR functionality that gets triggered during memory emergency during HW acceleration of OS-Controlled Memory Compression, By Virginia Tech Heap Lab.
+

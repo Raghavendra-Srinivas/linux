@@ -230,4 +230,5 @@ source "drivers/slimbus/Kconfig"
 
 source "drivers/interconnect/Kconfig"
 
+source "drivers/hawk/Kconfig"
 endmenu
