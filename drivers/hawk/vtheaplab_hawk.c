@@ -86,19 +86,19 @@ static void hawk_enable_interrupts()
   //PLIC programming to enable HAWK interrupt 
   addr = (u64*)(PLIC_BASE+IRQ_ENABLE_TARGET1);
   val = hawk_readl(addr); //*addr;
-  printk(KERN_ALERT "PLIC TARGET1 IRQ Enable before 0x%llu, data = 0x%u\n",addr,val);
+  printk(KERN_ALERT "PLIC TARGET1 IRQ Enable before 0x%px, data = 0x%u\n",addr,val);
   val = val | 0x8;
   hawk_writel(val,addr);//*addr=val; 
   val = hawk_readl(addr); //*addr;
-  printk(KERN_ALERT "PLIC TARGET1 IRQ Enable after 0x%llu, data = 0x%u\n",addr,val);
+  printk(KERN_ALERT "PLIC TARGET1 IRQ Enable after 0x%px, data = 0x%u\n",addr,val);
 
   addr = (u64*)(PLIC_BASE+IRQ_PRIORITY_SRC3);
   val = hawk_readl(addr); //*addr;
-  printk(KERN_ALERT "PLIC PRIORITY SRC3 before 0x%llu, data = 0x%u\n",addr,val);
+  printk(KERN_ALERT "PLIC PRIORITY SRC3 before 0x%px, data = 0x%u\n",addr,val);
   val = val | 0x7;
   hawk_writel(val,addr);//*addr=val; 
   val = hawk_readl(addr); //*addr;
-  printk(KERN_ALERT "PLIC PRIORITY SRC3 after 0x%llu, data = 0x%u\n",addr,val);
+  printk(KERN_ALERT "PLIC PRIORITY SRC3 after 0x%px, data = 0x%u\n",addr,val);
 
    	/* Enable the Global Interrupt Enable */
 	//hawk_writel(XEL_GIER_GIE_MASK, drvdata->base_addr + XEL_GIER_OFFSET);
