@@ -136,11 +136,11 @@ irqreturn_t isr(int irq, void *dev_id, struct pt_regs *regs) {
 }
 static int __init irq_ex_init(void) {
   //hawk_enable_interrupts();
-  printk (KERN_INFO "Interrupt with Interrupt ID: 3 adding\n");
+  printk (KERN_INFO "HAWK Interrupt with Interrupt ID: 3 adding\n");
   return request_irq (3,(irq_handler_t)isr,IRQF_SHARED,"hawk_interrupt",(void*)(isr));
 }
 static void __exit irq_ex_exit(void) {
-  printk (KERN_INFO "Interrupt with Interrupt ID: 3 removed\n");
+  printk (KERN_INFO "HAWK Interrupt with Interrupt ID: 3 removed\n");
   free_irq(3,(void*)(isr));
 }
 module_init(irq_ex_init);
