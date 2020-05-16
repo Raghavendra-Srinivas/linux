@@ -71,10 +71,10 @@
  * This function Hawk interrupt for inflation along
  * with the Global Interrupt Enable.
  */
-static void hawk_enable_interrupts(void);
+//static void hawk_enable_interrupts(void);
 
 
-
+/*
 static void hawk_enable_interrupts(void)
 {
   //u32 reg_data;
@@ -100,10 +100,10 @@ static void hawk_enable_interrupts(void)
   val = hawk_readl(addr); //*addr;
   printk(KERN_ALERT "PLIC PRIORITY SRC3 after 0x%px, data = 0x%u\n",addr,val);
 
-   	/* Enable the Global Interrupt Enable */
+   	// Enable the Global Interrupt Enable 
 	//hawk_writel(XEL_GIER_GIE_MASK, drvdata->base_addr + XEL_GIER_OFFSET);
 }
-
+*/
 /**
  * hawk_disable_interrupts - Disable the interrupts for the EmacLite device
  * @drvdata:	Pointer to the Emaclite device private data
@@ -135,7 +135,7 @@ irqreturn_t isr(int irq, void *dev_id, struct pt_regs *regs) {
   return IRQ_HANDLED;
 }
 static int __init irq_ex_init(void) {
-  hawk_enable_interrupts();
+  //hawk_enable_interrupts();
   printk (KERN_INFO "Interrupt with Interrupt ID: 3 adding\n");
   return request_irq (3,(irq_handler_t)isr,IRQF_SHARED,"hawk_interrupt",(void*)(isr));
 }
