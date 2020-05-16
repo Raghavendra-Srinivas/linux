@@ -56,7 +56,7 @@
 //#define hawk_readl		ioread32be
 //#define hawk_writel	iowrite32be
 //#else
-#define hawk_readl	hawk_readl
+#define hawk_readl	ioread32
 #define hawk_writel	iowrite32
 //#endif
 
@@ -71,11 +71,11 @@
  * This function Hawk interrupt for inflation along
  * with the Global Interrupt Enable.
  */
+static void hawk_enable_interrupts(void);
 
 
 
-
-static void hawk_enable_interrupts()
+static void hawk_enable_interrupts(void)
 {
   //u32 reg_data;
 
@@ -135,7 +135,7 @@ irqreturn_t isr(int irq, void *dev_id, struct pt_regs *regs) {
   return IRQ_HANDLED;
 }
 static int __init irq_ex_init(void) {
-  hawk_enable_interrupts();
+  hawk_enable_interrupts(void);
   printk (KERN_INFO "Interrupt with Interrupt ID: 3 adding\n");
   return request_irq (3,(irq_handler_t)isr,IRQF_SHARED,"hawk_interrupt",(void*)(isr));
 }
