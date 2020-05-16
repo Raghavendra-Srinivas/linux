@@ -135,7 +135,7 @@ irqreturn_t isr(int irq, void *dev_id, struct pt_regs *regs) {
   return IRQ_HANDLED;
 }
 static int __init irq_ex_init(void) {
-  hawk_enable_interrupts(void);
+  hawk_enable_interrupts();
   printk (KERN_INFO "Interrupt with Interrupt ID: 3 adding\n");
   return request_irq (3,(irq_handler_t)isr,IRQF_SHARED,"hawk_interrupt",(void*)(isr));
 }
