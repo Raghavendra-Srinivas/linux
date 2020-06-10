@@ -84,6 +84,14 @@ static int hawk_of_probe(struct platform_device *ofdev)
 	
 	dev_info(dev,
 		 "Hawk Base address=0x%p\n",base_addr + HAWK_LOW_WATERMARK);
+	
+	//Configure contorl register
+  	printk(KERN_ALERT "Writing the HAWK control register\n");
+	hawk_writel(0x1234, base_addr);
+	//Read back
+	reg_data = hawk_readl(base_addr);
+  	printk(KERN_ALERT "Reading back the Hawk control register =%x\n",reg_data);
+	
 	//Configure watermark register
   	printk(KERN_ALERT "Writing the Hawk Low watermark register\n");
 	hawk_writel(0x1234, base_addr + HAWK_LOW_WATERMARK);
