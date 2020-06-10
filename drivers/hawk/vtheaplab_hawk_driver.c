@@ -78,6 +78,10 @@ static int hawk_of_probe(struct platform_device *ofdev)
 	dev_info(dev, "Hawk base address is initialized\n");
 	dev_info(dev,
 		 "Hawk Base address=0x%p\n",base_addr);
+	
+	dev_info(dev,
+		 "Hawk Base address pointer deference =0x%x\n",*base_addr);
+	
 	dev_info(dev,
 		 "Hawk Base address=0x%p\n",base_addr + HAWK_LOW_WATERMARK);
 	//Configure watermark register
