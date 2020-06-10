@@ -28,9 +28,9 @@
 #define hawk_readl      ioread32  	
 #define hawk_writel	iowrite32
 
-struct hawk_local {
-	void __iomem *base_addr;
-};
+//struct hawk_local {
+//	void __iomem *base_addr;
+//};
 
 /**
  * hawk_of_probe - Unbind the driver from the Hawk device.
@@ -60,32 +60,32 @@ static int hawk_of_remove(struct platform_device *of_dev)
 static int hawk_of_probe(struct platform_device *ofdev)
 {
 	struct resource *res;
-	struct hawk_local *lp = NULL;
+	//struct hawk_local *lp = NULL;
 	struct device *dev = &ofdev->dev;
 	u32 reg_data;
-	
+	void __iomem *base_addr;
 
 	int rc = 0;
 
 	dev_info(dev, " Hawk Device Tree Probing and get hawk base address with IO reg\n");
 
-	res = platform_get_resource(ofdev, IORESOURCE_REG, 0);
-	lp->base_addr = devm_ioremap_resource(&ofdev->dev, res);
-	if (IS_ERR(lp->base_addr)) {
-		rc = PTR_ERR(lp->base_addr);
+	res = platform_get_resource(ofdev, IORESOURCE_MEM, 0);
+	base_addr = devm_ioremap_resource(&ofdev->dev, res);
+	if (IS_ERR(base_addr)) {
+		rc = PTR_ERR(base_addr);
 		goto error;
 	}
 	dev_info(dev, "Hawk base address is initialized\n");
 
 	//Configure watermark register
   	printk(KERN_ALERT "Writing the Hawk Low watermark register\n");
-	hawk_writel(0x1234, lp->base_addr + HAWK_LOW_WATERMARK);
+	hawk_writel(0x1234, base_addr + HAWK_LOW_WATERMARK);
 	//Read back
-	reg_data = hawk_readl(lp->base_addr + HAWK_LOW_WATERMARK);
+	reg_data = hawk_readl(base_addr + HAWK_LOW_WATERMARK);
   	printk(KERN_ALERT "Reading back the Hawk Low watermark register =%x\n",reg_data);
 
 	dev_info(dev,
-		 "Hawk Base address=0x%p, Low Water Mark value=%x\n",lp->base_addr,reg_data);
+		 "Hawk Base address=0x%p, Low Water Mark value=%x\n",base_addr,reg_data);
 	return 0;
 error:
   	printk(KERN_ALERT "Error getting Base address of Hawk");
