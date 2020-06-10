@@ -3,4 +3,4 @@
 # Makefile for the VT- HeapLab HAWK drivers.
 #
 
-obj-$(CONFIG_VTHEAPLAB_HAWK) += vtheaplab_hawk.o
+obj-$(CONFIG_VTHEAPLAB_HAWK) += vtheaplab_hawk_driver.o
