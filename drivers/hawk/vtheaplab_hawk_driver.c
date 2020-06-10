@@ -63,7 +63,7 @@ static int hawk_of_probe(struct platform_device *ofdev)
 	struct hawk_local *lp = NULL;
 	struct device *dev = &ofdev->dev;
 	u32 reg_data;
-	struct device *dev = &ofdev->dev;
+	
 
 	int rc = 0;
 
