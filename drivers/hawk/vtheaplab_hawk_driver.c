@@ -76,7 +76,10 @@ static int hawk_of_probe(struct platform_device *ofdev)
 		goto error;
 	}
 	dev_info(dev, "Hawk base address is initialized\n");
-
+	dev_info(dev,
+		 "Hawk Base address=0x%p\n",base_addr);
+	dev_info(dev,
+		 "Hawk Base address=0x%p\n",base_addr + HAWK_LOW_WATERMARK);
 	//Configure watermark register
   	printk(KERN_ALERT "Writing the Hawk Low watermark register\n");
 	hawk_writel(0x1234, base_addr + HAWK_LOW_WATERMARK);
