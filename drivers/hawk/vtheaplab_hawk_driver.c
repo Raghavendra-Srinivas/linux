@@ -67,7 +67,7 @@ static int hawk_of_probe(struct platform_device *ofdev)
 
 	int rc = 0;
 
-	dev_info(dev, " Hawk Device Tree Probing\n");
+	dev_info(dev, " Hawk Device Tree Probing and get hawk base address with IO reg\n");
 
 	res = platform_get_resource(ofdev, IORESOURCE_REG, 0);
 	lp->base_addr = devm_ioremap_resource(&ofdev->dev, res);
