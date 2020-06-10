@@ -62,18 +62,19 @@ static int hawk_of_probe(struct platform_device *ofdev)
 	struct resource *res;
 	struct hawk_local *lp = NULL;
 	u32 reg_data;
-	//struct device *dev = &ofdev->dev;
+	struct device *dev = &ofdev->dev;
 
 	int rc = 0;
 
 	dev_info(dev, " Hawk Device Tree Probing\n");
 
-	res = platform_get_resource(ofdev, IORESOURCE_MEM, 0);
+	res = platform_get_resource(ofdev, IORESOURCE_REG, 0);
 	lp->base_addr = devm_ioremap_resource(&ofdev->dev, res);
 	if (IS_ERR(lp->base_addr)) {
 		rc = PTR_ERR(lp->base_addr);
 		goto error;
 	}
+	dev_info(dev, "Hawk base address is initialized\n");
 
 	//Configure watermark register
   	printk(KERN_ALERT "Writing the Hawk Low watermark register\n");
@@ -87,6 +88,7 @@ static int hawk_of_probe(struct platform_device *ofdev)
 	return 0;
 error:
   	printk(KERN_ALERT "Error getting Base address of Hawk");
+	dev_info(dev, "Error getting Hawk Base address \n");
 	return rc;
 }
 
